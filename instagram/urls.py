@@ -1,7 +1,12 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from . import views
 
-app_name = 'instagram'
+
+router = DefaultRouter()
+router.register('post', views.PostViewSet) # 2개의 url을 만들어줌.
+# router.urls # list 형태로 urls 가 들어와 있음.
 
 urlpatterns =[
-    # path(),
+    path('', include(router.urls)),
 ]
