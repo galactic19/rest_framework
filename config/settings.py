@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # django-rest-framework
     'rest_framework',
+    'instagram',
 ]
 
 MIDDLEWARE = [
