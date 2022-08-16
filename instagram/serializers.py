@@ -7,17 +7,20 @@ from .models import Post
 class PostOption(ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = 'pk', 'username', 'email'
+        fields = ['pk', 'username', 'email']
 
 
 class PostSerializer(ModelSerializer):
-    author = PostOption()
+    # author = PostOption()
+    author_name = serializers.ReadOnlyField(source='author.username')
 
     class Meta:
         model = Post
         fields = [
-            'author',
+            'pk',
+            'author_name',
             'content',
             'created_at',
             'updated_at',
+            'is_public',
         ]
