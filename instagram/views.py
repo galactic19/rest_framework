@@ -1,4 +1,5 @@
 from rest_framework.decorators import action
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
@@ -13,6 +14,10 @@ class PostViewSet(ModelViewSet):
     serializer_class = PostSerializer
     # authentication_classes = [IsAuthenticated]
     permission_classes = [IsAuthenticated, IsAuthorOrReadonly]  # 인증 설정
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['content']
+    ordering_fields = ['created_at']
+    ordering = ['created_at', '-updated_at']
 
     def perform_create(self, serializer):
         author = self.request.user
