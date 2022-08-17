@@ -9,7 +9,7 @@ router.register('post', views.PostViewSet) # 2개의 url을 만들어줌.
 
 urlpatterns =[
     path('', include(router.urls)),
-    path('public/', views.public_post_list),
+    # path('public/', views.public_post_list),
     # path('get/', views.post_list),
     # path('detail/<int:pk>/', views.post_detail),
 ]

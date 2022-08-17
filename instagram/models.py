@@ -12,3 +12,6 @@ class Post(BasedModel):
     content = models.TextField()
     is_public = models.BooleanField(default=True)
     ip = models.GenericIPAddressField(null=True, blank=True)
+
+    class Meta:
+        ordering = '-created_at', '-updated_at'
